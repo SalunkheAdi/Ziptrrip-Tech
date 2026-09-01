@@ -1,0 +1,242 @@
+/* ─── Todo Detail Page ────────────────────────────────────────── */
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.back-btn {
+  background: var(--white);
+  border: 1.5px solid var(--gray-300);
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: var(--gray-700);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition);
+  text-decoration: none;
+}
+
+.back-btn:hover {
+  background: var(--gray-100);
+  border-color: var(--gray-400);
+}
+
+.detail-header h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--gray-900);
+}
+
+/* Detail card */
+.detail-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow);
+}
+
+.detail-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--gray-900);
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+
+.detail-title.completed {
+  text-decoration: line-through;
+  color: var(--gray-400);
+}
+
+.detail-badges {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+/* Info grid */
+.detail-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+  padding: 20px;
+  background: var(--gray-50);
+  border-radius: var(--radius);
+  border: 1px solid var(--gray-200);
+}
+
+.detail-info-item label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--gray-400);
+  margin-bottom: 4px;
+}
+
+.detail-info-item .value {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--gray-800);
+}
+
+.detail-info-item .value.overdue {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+/* Description */
+.detail-section {
+  margin-bottom: 24px;
+}
+
+.detail-section h3 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--gray-400);
+  margin-bottom: 10px;
+}
+
+.detail-description {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  padding: 16px;
+  font-size: 0.92rem;
+  color: var(--gray-700);
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+.detail-no-desc {
+  color: var(--gray-400);
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+/* Tags */
+.detail-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Activity / Timeline */
+.detail-timeline {
+  border-left: 2px solid var(--gray-200);
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.timeline-item {
+  position: relative;
+  font-size: 0.85rem;
+  color: var(--gray-600);
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -21px;
+  top: 5px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+  border: 2px solid var(--white);
+  box-shadow: 0 0 0 2px var(--gray-200);
+}
+
+.timeline-item time {
+  font-size: 0.75rem;
+  color: var(--gray-400);
+  display: block;
+  margin-top: 2px;
+}
+
+/* Quick status change */
+.status-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.status-chip {
+  padding: 7px 14px;
+  border-radius: 20px;
+  border: 2px solid var(--gray-200);
+  background: var(--white);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+  color: var(--gray-600);
+}
+
+.status-chip:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-light);
+}
+
+.status-chip.active {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--white);
+}
+
+/* Detail page actions */
+.detail-actions {
+  display: flex;
+  gap: 10px;
+  padding-top: 20px;
+  border-top: 1px solid var(--gray-200);
+  flex-wrap: wrap;
+}
+
+/* Error state */
+.error-state {
+  text-align: center;
+  padding: 80px 24px;
+}
+
+.error-state .emoji {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.error-state h2 {
+  color: var(--gray-700);
+  margin-bottom: 8px;
+}
+
+.error-state p {
+  color: var(--gray-500);
+  margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+  .detail-card {
+    padding: 20px;
+  }
+
+  .detail-title {
+    font-size: 1.3rem;
+  }
+}
