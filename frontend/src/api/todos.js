@@ -1,7 +1,9 @@
 // All API calls to the backend Express server
-// Base URL uses React's proxy (set in package.json → "proxy": "http://localhost:5000")
+// In development: uses React proxy (package.json → "proxy": "http://localhost:5000")
+// In production:  uses REACT_APP_API_URL environment variable (set in Vercel)
 
-const BASE = '/api/todos';
+const API_BASE = process.env.REACT_APP_API_URL || '';
+const BASE = `${API_BASE}/api/todos`;
 
 // Helper: throw error with response message
 async function handleResponse(res) {

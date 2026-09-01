@@ -179,3 +179,15 @@ Single todo detail page. Receives the todo ID as a query parameter.
 ## 📄 Documentation
 
 Full feature documentation is available in [`docs/FEATURES.md`](docs/FEATURES.md).
+
+---
+
+## ☁️ Deployment
+
+To deploy the app online (free), see the full guide: [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md)
+
+| Service | Platform | URL |
+|---------|----------|-----|
+| Frontend | Vercel | [vercel.com](https://vercel.com) |
+| Backend  | Render  | [render.com](https://render.com) |
+| Database | Neon    | [neon.tech](https://neon.tech) |

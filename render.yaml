@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: ziptrap-backend
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        value: 5432
+      - key: DB_NAME
+        sync: false
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: CLIENT_URL
+        sync: false
