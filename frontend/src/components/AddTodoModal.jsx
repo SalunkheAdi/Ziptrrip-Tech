@@ -9,6 +9,7 @@ const EMPTY_FORM = {
   status: 'pending',
   due_date: '',
   tags: '',
+  assigned_to: '',
 };
 
 /**
@@ -51,6 +52,7 @@ function AddTodoModal({ onClose, onCreated, showToast }) {
         status: form.status,
         due_date: form.due_date || null,
         tags: tagsArray,
+        assigned_to: form.assigned_to || null,
       });
 
       showToast('✅ Todo created!', 'success');
@@ -109,6 +111,18 @@ function AddTodoModal({ onClose, onCreated, showToast }) {
                 <option value="pending">⏳ Pending</option>
                 <option value="in-progress">🔄 In Progress</option>
                 <option value="completed">✅ Completed</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="assigned_to">Assign To</label>
+              <select id="assigned_to" name="assigned_to" value={form.assigned_to} onChange={handleChange}>
+                <option value="">— Select person —</option>
+                <option value="Aditya">👤 Aditya</option>
+                <option value="Jiya">👤 Jiya</option>
+                <option value="Ebineshwar">👤 Ebineshwar</option>
               </select>
             </div>
           </div>
