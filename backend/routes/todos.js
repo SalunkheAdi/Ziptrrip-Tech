@@ -69,17 +69,17 @@ router.get('/:id', async (req, res) => {
 // ─────────────────────────────────────────────
 router.post('/', async (req, res) => {
   try {
-    const { title, description, priority = 'medium', status = 'pending', due_date, tags = [] } = req.body;
+    const { title, description, priority = 'medium', status = 'pending', due_date, tags = [], assigned_to } = req.body;
 
     if (!title || title.trim() === '') {
       return res.status(400).json({ success: false, message: 'Title is required' });
     }
 
     const result = await pool.query(
-      `INSERT INTO todos (title, description, priority, status, due_date, tags)
-       VALUES ($1, $2, $3, $4, $5, $6)
+      `INSERT INTO todos (title, description, priority, status, due_date, tags, assigned_to)
+       VALUES ($1, $2, $3, $4, $5, $6, $7)
        RETURNING *`,
-      [title.trim(), description || null, priority, status, due_date || null, tags]
+      [title.trim(), description || null, priority, status, due_date || null, tags, assigned_to || null]
     );
 
     res.status(201).json({ success: true, data: result.rows[0] });
@@ -96,7 +96,7 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, description, priority, status, due_date, tags } = req.body;
+    const { title, description, priority, status, due_date, tags, assigned_to } = req.body;
 
     // Check existence first
     const existing = await pool.query('SELECT * FROM todos WHERE id = $1', [id]);
@@ -113,8 +113,9 @@ router.put('/:id', async (req, res) => {
            priority = $3,
            status = $4,
            due_date = $5,
-           tags = $6
-       WHERE id = $7
+           tags = $6,
+           assigned_to = $7
+       WHERE id = $8
        RETURNING *`,
       [
         title !== undefined ? title.trim() : old.title,
@@ -123,6 +124,7 @@ router.put('/:id', async (req, res) => {
         status !== undefined ? status : old.status,
         due_date !== undefined ? due_date : old.due_date,
         tags !== undefined ? tags : old.tags,
+        assigned_to !== undefined ? assigned_to : old.assigned_to,
         id,
       ]
     );

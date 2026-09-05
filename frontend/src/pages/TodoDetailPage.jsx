@@ -222,6 +222,13 @@ function TodoDetailPage() {
             <label>Last Updated</label>
             <div className="value">✏️ {formatDateTime(todo.updated_at)}</div>
           </div>
+
+          <div className="detail-info-item">
+            <label>Assigned To</label>
+            <div className="value">
+              {todo.assigned_to ? `👤 ${todo.assigned_to}` : '—'}
+            </div>
+          </div>
         </div>
 
         {/* ── Description ───────────────────────────────── */}

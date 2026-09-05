@@ -18,6 +18,7 @@ function EditTodoModal({ todo, onClose, onUpdated, showToast }) {
     status: 'pending',
     due_date: '',
     tags: '',
+    assigned_to: '',
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -32,6 +33,7 @@ function EditTodoModal({ todo, onClose, onUpdated, showToast }) {
         status: todo.status || 'pending',
         due_date: todo.due_date ? todo.due_date.split('T')[0] : '',
         tags: Array.isArray(todo.tags) ? todo.tags.join(', ') : '',
+        assigned_to: todo.assigned_to || '',
       });
     }
   }, [todo]);
@@ -63,6 +65,7 @@ function EditTodoModal({ todo, onClose, onUpdated, showToast }) {
         status: form.status,
         due_date: form.due_date || null,
         tags: tagsArray,
+        assigned_to: form.assigned_to || null,
       });
 
       showToast('✏️ Todo updated!', 'success');
@@ -119,6 +122,18 @@ function EditTodoModal({ todo, onClose, onUpdated, showToast }) {
                 <option value="pending">⏳ Pending</option>
                 <option value="in-progress">🔄 In Progress</option>
                 <option value="completed">✅ Completed</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="edit-assigned_to">Assign To</label>
+              <select id="edit-assigned_to" name="assigned_to" value={form.assigned_to} onChange={handleChange}>
+                <option value="">— Select person —</option>
+                <option value="Aditya">👤 Aditya</option>
+                <option value="Jiya">👤 Jiya</option>
+                <option value="Ebineshwar">👤 Ebineshwar</option>
               </select>
             </div>
           </div>

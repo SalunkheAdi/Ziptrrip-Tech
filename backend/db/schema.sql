@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS todos (
   status VARCHAR(20) DEFAULT 'pending' CHECK (status IN ('pending', 'in-progress', 'completed')),
   due_date DATE,
   tags TEXT[],
+  assigned_to VARCHAR(100),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
