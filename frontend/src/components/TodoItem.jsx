@@ -108,6 +108,13 @@ function TodoItem({ todo, selected, onSelect, onEdit, onDeleted, onStatusChange,
               )}
             </div>
           )}
+
+          {/* Assigned To */}
+          {todo.assigned_to && (
+            <span className="tag-chip" style={{ background: 'var(--primary-light, #ede9fe)', color: 'var(--primary, #7c3aed)' }}>
+              👤 {todo.assigned_to}
+            </span>
+          )}
         </div>
       </div>
 
